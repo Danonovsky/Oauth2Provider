@@ -20,6 +20,7 @@ class IdentityService : IIdentityService
 
     private async Task ValidateUser(SignUp user) {
         if(await _db.Users.AnyAsync(_ => _.Email == user.Email)) throw new UserAlreadyExistsException($"User with email '{user.Email}' already exists.");
+        if(user.PasswordsMatch is false) throw new PasswordsDoesntMatchException("Passwords doesn't match.");
     }
 
     public Task SignUp(SignUp request)
