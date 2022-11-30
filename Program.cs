@@ -4,11 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Configuration.AddJsonFile("appsettings.json");
+builder.Services.AddIdentity(builder.Configuration);
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<IdentityContext>(options => {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,8 +21,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
-
+app.UseAuthentication();
+app.MapControllers();
 app.MapRazorPages();
 
 app.Run();
