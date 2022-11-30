@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.AddIdentity(builder.Configuration);
+builder.Services.AddSession();
 builder.Services.AddRazorPages();
 var app = builder.Build();
 
@@ -24,5 +25,14 @@ app.UseRouting();
 app.UseAuthentication();
 app.MapControllers();
 app.MapRazorPages();
+app.UseSession();
+//middleware for auto adding token to header
+app.Use(async (context, next) => {
+    var token = context.Session.GetString("Token");
+    if(string.IsNullOrEmpty(token) is false) {
+        context.Request.Headers.Add("Authorization",$"Bearer {token}");
+    }
+    await next();
+});
 
 app.Run();
