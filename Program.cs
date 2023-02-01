@@ -25,6 +25,7 @@ app.UseAuthentication();
 app.MapControllers();
 app.MapRazorPages();
 app.UseSession();
+app.ConfigureExceptionHandler();
 //middleware for auto adding token to header
 app.Use(async (context, next) => {
     var token = context.Session.GetString("Token");

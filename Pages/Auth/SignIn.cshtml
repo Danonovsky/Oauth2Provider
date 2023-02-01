@@ -1,12 +1,23 @@
 ﻿@page "/sign-in";
-@model Oauth2Provider.Pages.Auth.SignInModel
+@model Oauth2Provider.Pages.Auth.SignIn
 @{
 }
 
 <div class="container">
-    <h1 class="display-4">Sign In</h1>
-    <form action="" method="post">
-        @Html.LabelFor(m => m.Email, new { @class="form-label" })
-        @Html.TextBoxFor(m => m.Email, new { @class="form-control" })
-    </form>
+    <div class="card p-5">
+        <h1 class="display-4 text-center">Sign In</h1>
+        <form action="" method="post">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group pt-2">
+                <input type="submit" class="btn btn-outline-primary col-12" value="Sign In">
+            </div>
+        </form>
+    </div>
 </div>

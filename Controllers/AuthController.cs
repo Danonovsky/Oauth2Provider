@@ -11,13 +11,13 @@ public class AuthController : BaseController {
     }
 
     [HttpPost("sign-in")]
-    public async Task<JwtDto> SignIn(SignIn request) {
+    public async Task<JwtDto> SignIn(SignInDto request) {
         var result = await _identityService.SignIn(request);
         return result;
     }
 
     [HttpPost("sign-up")]
-    public async Task SignUp(SignUp request) {
+    public async Task SignUp(SignUpDto request) {
         await _identityService.SignUp(request);
     }
 }

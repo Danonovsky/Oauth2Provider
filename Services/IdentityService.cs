@@ -7,8 +7,8 @@ using Oauth2Provider.Entities;
 using Oauth2Provider.Exceptions;
 
 public interface IIdentityService {
-    public Task SignUp(SignUp request);
-    public Task<JwtDto> SignIn(SignIn request);
+    public Task SignUp(SignUpDto request);
+    public Task<JwtDto> SignIn(SignInDto request);
 }
 class IdentityService : IIdentityService
 {
@@ -21,7 +21,7 @@ class IdentityService : IIdentityService
         _configuration = configuration;
     }
 
-    public async Task<JwtDto> SignIn(SignIn request)
+    public async Task<JwtDto> SignIn(SignInDto request)
     {
         if(request is null) throw new ArgumentNullException("SignIn request cannot be null");
         var user = await AuthenticateUser(request);
@@ -31,7 +31,7 @@ class IdentityService : IIdentityService
 
     }
 
-    public async Task SignUp(SignUp request)
+    public async Task SignUp(SignUpDto request)
     {
         if(request is null) throw new ArgumentNullException("SignUp request cannot be null");
         await ValidateUser(request);
@@ -46,12 +46,12 @@ class IdentityService : IIdentityService
         await _db.SaveChangesAsync();
     }
 
-    private async Task ValidateUser(SignUp user) {
+    private async Task ValidateUser(SignUpDto user) {
         if(await _db.Users.AnyAsync(_ => _.Email == user.Email)) throw new UserAlreadyExistsException($"User with email '{user.Email}' already exists.");
         if(user.PasswordsMatch is false) throw new PasswordsDoesntMatchException("Passwords doesn't match.");
     }
 
-    private async Task<User> AuthenticateUser(SignIn request) {
+    private async Task<User> AuthenticateUser(SignInDto request) {
         var user = await _db.Users.Where(_ => _.Email == request.Email && _.Password == request.Password)
         .FirstOrDefaultAsync();
         if(user is null) throw new UserNotFoundException($"User with given credentials was not found.");
@@ -73,7 +73,7 @@ class IdentityService : IIdentityService
         } 
 }
 
-public sealed class SignUp {
+public sealed class SignUpDto {
     public string Email { get; set; } = "";
     public string Password {get;set;} = "";
     public string ConfirmPassword {get;set;} = "";
@@ -84,7 +84,7 @@ public sealed class SignUp {
     public bool PasswordsMatch => Password == ConfirmPassword;
 }
 
-public sealed class SignIn {
+public sealed class SignInDto {
     public string Email {get;set;} = "";
     public string Password {get;set;} = "";
 }

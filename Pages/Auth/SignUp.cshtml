@@ -1,0 +1,39 @@
+﻿@page "/sign-up";
+@model Oauth2Provider.Pages.Auth.SignUp
+@{
+}
+
+<div class="container">
+    <div class="card p-5">
+        <h1 class="display-4 text-center">Sign Up</h1>
+        <form action="" method="post">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GithubUrl, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.GithubUrl, new { @class = "form-control" })
+            </div>
+            <div class="form-group pt-2">
+                <input type="submit" class="btn btn-outline-primary col-12" value="Sign In">
+            </div>
+        </form>
+    </div>
+</div>
