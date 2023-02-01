@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
+namespace Oauth2Provider.Controllers;
+
 public class AuthController : BaseController {
     private readonly IIdentityService _identityService;
 

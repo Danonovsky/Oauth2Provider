@@ -2,6 +2,8 @@ using System.Net;
 using System.Text.Json;
 using Microsoft.AspNetCore.Diagnostics;
 
+namespace Oauth2Provider.Extensions;
+
 public static class ExceptionMiddlewareExtensions {
     public static void ConfigureExceptionHandler(this IApplicationBuilder app) {
         app.UseExceptionHandler(appError => {

@@ -1,3 +1,5 @@
+namespace Oauth2Provider.Entities;
+
 sealed class User : BaseEntity
 {
     public string Email {get;set;} = "";

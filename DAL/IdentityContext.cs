@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Oauth2Provider.Entities;
+
+namespace Oauth2Provider.DAL;
 
 class IdentityContext : DbContext
 {

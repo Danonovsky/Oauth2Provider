@@ -2,6 +2,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Oauth2Provider.DAL;
+using Oauth2Provider.Entities;
+using Oauth2Provider.Exceptions;
 
 public interface IIdentityService {
     public Task SignUp(SignUp request);

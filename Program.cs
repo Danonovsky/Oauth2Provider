@@ -1,9 +1,8 @@
-using Microsoft.EntityFrameworkCore;
+using Oauth2Provider.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.AddIdentity(builder.Configuration);
 builder.Services.AddSession();
 builder.Services.AddRazorPages();
