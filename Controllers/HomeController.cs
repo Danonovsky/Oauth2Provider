@@ -55,6 +55,12 @@ public class HomeController : Controller
         loginRequest.RedirectUri = loginRequest.RedirectUri + "&code=" + loginRequest.Code;
         return Redirect(loginRequest.RedirectUri);
     }
+    
+    public JsonResult Token()
+    {
+        var result = _authorizeResultService.GenerateToken(_accessor);
+        return Json(result.HasError ? "0" : result);
+    }
 
     public IActionResult Error(string error)
     {
