@@ -27,7 +27,7 @@ public class SignIn : PageModel
             Password = Password
         });
         if (jwt?.Token is null) return RedirectToPage("/sign-in");
-        HttpContext.Session.SetString("Token",jwt.Token);
+        HttpContext.Session.SetString("Token", jwt.Token);
         return LocalRedirect("/");
     }
 }

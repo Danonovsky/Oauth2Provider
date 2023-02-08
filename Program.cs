@@ -1,8 +1,12 @@
 using Oauth2Provider.Extensions;
+using Oauth2Provider.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<ICodeStoreService, CodeStoreService>();
+builder.Services.AddScoped<IAuthorizeResultService, AuthorizeResultService>();
 builder.Services.AddIdentity(builder.Configuration);
 builder.Services.AddSession();
 builder.Services.AddRazorPages();
