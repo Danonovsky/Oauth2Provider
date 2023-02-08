@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Oauth2Provier.Pages;
+namespace Oauth2Provider.Pages;
 
 public class IndexModel : PageModel
 {

@@ -9,7 +9,7 @@ using Oauth2Provider.DAL;
 
 #nullable disable
 
-namespace Oauth2Provier.Migrations
+namespace Oauth2Provider.Migrations
 {
     [DbContext(typeof(IdentityContext))]
     [Migration("20221109091551_Init")]

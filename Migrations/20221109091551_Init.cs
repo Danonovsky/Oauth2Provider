@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Oauth2Provier.Migrations
+namespace Oauth2Provider.Migrations
 {
     public partial class Init : Migration
     {

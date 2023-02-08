@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "Oauth2Provier": {
+    "Oauth2Provider": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

@@ -8,7 +8,7 @@ using Oauth2Provider.DAL;
 
 #nullable disable
 
-namespace Oauth2Provier.Migrations
+namespace Oauth2Provider.Migrations
 {
     [DbContext(typeof(IdentityContext))]
     partial class IdentityContextModelSnapshot : ModelSnapshot
